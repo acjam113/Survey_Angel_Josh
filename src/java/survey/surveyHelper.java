@@ -1,34 +1,33 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package survey;
 
-import org.hibernate.SQLQuery;
 import org.hibernate.Session;
+import org.hibernate.SQLQuery;
 
 /**
  *
- * @author Josh
+ * @author Angel
  */
-public class QuestionHelper {
+public class surveyHelper {
+    
     Session session = null;
     
-    // initializes a session
-    public QuestionHelper(){
+     public surveyHelper(){
         try{
             this.session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
         } catch (Exception e){
             e.printStackTrace();
         }
     }
-    
-    public int insertQuestion(Question a){
+     
+     
+     
+     public int insertSurvey(Survey a){
         int result = 0;
         
-        String sql = "insert into question(Question_Text, Survey_ID)"
-                + "values (:question, :survey)";
+        String sql = "insert into survey(Survey_Name, User_ID)"
+                + "values (:surveyName, :userID)";
         
         try{
             // checks to see if the transaction is active
@@ -40,12 +39,12 @@ public class QuestionHelper {
             SQLQuery q = session.createSQLQuery(sql);
             
             // associating User POJO and table with a query
-            q.addEntity(Question.class);
+            q.addEntity(Survey.class);
             
             // binds values to the placeholders in the query
-            q.setParameter("question", a.getQuestionText());
-            q.setParameter("survey", 2);
-            
+            q.setParameter("surveyName", a.getSurveyName());
+            q.setParameter("userID", 3);
+           
             // executes the query
             result = q.executeUpdate();
             
@@ -58,5 +57,6 @@ public class QuestionHelper {
         }
         
         return result;
-    }
+     }
+    
 }

@@ -19,7 +19,7 @@ public class QuestionController implements Serializable {
 
     
     String QuestionText;
-    Survey Survey;
+    int Survey;
     String response;
     /**
      * Creates a new instance of QuestionController
@@ -40,29 +40,29 @@ public class QuestionController implements Serializable {
         this.QuestionText = QuestionText;
     }
 
-    public Survey getSurvey() {
+    public int getSurvey() {
         return Survey;
     }
 
-    public void setSurvey(Survey Survey) {
+    public void setSurvey(int Survey) {
         this.Survey = Survey;
     }
 
       public String getResponse() {
         
-        if(QuestionText != null && Survey == null){
+        if(QuestionText != null && Survey == 0){
             
             
-            question = new Question(Survey, QuestionText);
+            question = new Question(QuestionText, Survey);
             
             if(helper.insertQuestion(question) == 1){
                 QuestionText = null;
-                Survey= null;
+                Survey= 0;
                 response = "Question Added.";
                 return response;
             }else{
                 QuestionText = null;
-                Survey = null;
+                Survey = 0;
                 response = "Question Not Added.";
                 return response;
             }

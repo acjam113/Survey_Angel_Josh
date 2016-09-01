@@ -12,6 +12,7 @@ public class Question  implements java.io.Serializable {
 
 
      private int questionId;
+     private int surveyID;
      private Survey survey;
      private String questionText;
      private Set<Response> responses = new HashSet<Response>(0);
@@ -20,14 +21,14 @@ public class Question  implements java.io.Serializable {
     }
 
 	
-    public Question(Survey survey, String questionText) {
+    public Question(String questionText, int surveyID) {
         this.questionId = questionId;
-        this.survey = survey;
+        this.surveyID = surveyID;
         this.questionText = questionText;
     }
-    public Question(Survey survey, String questionText, Set<Response> responses) {
+    public Question(String questionText, int surveyID, Set<Response> responses) {
        this.questionId = questionId;
-       this.survey = survey;
+       this.surveyID = surveyID;
        this.questionText = questionText;
        this.responses = responses;
     }

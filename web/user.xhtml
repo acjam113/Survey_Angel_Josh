@@ -22,7 +22,8 @@
                          size="50" maxlength="45" required="true" label="Email" />
                     <h:message for="User_Email" style="color: red; font-size: 0.7em" />
                 </h:panelGrid>
-                <h:commandButton id="Submit" value="Submit" action="user" />
+            <h:commandButton id="Submit" value="Submit" action="user" />
+            <h:commandButton id="Next" value="Next" action="survey.xhtml" />
                 <h:commandButton value="Clear" type="reset" />
             </h:form>
             <h:outputText escape="false" value="#{userController.response}" />
