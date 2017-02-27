@@ -11,56 +11,57 @@ import java.util.Set;
 public class User  implements java.io.Serializable {
 
 
-     private int userId;
-     private String userFname;
-     private String userLname;
-     private String userEmail;
+     private Short userId;
+     private String UserFname;
+     private String UserLname;
+     private String UserEmail;
      private Set<Survey> surveys = new HashSet<Survey>(0);
 
     public User() {
     }
 
 	
-    public User(int userId, String userEmail) {
-        this.userId = userId;
-        this.userEmail = userEmail;
+    public User(String UserFname, String UserLname, String UserEmail) {
+        this.UserFname = UserFname;
+        this.UserLname = UserLname;
+        this.UserEmail = UserEmail;
     }
-    public User(int userId, String userFname, String userLname, String userEmail, Set<Survey> surveys) {
-       this.userId = userId;
-       this.userFname = userFname;
-       this.userLname = userLname;
-       this.userEmail = userEmail;
+    public User(String UserFname, String UserLname, String UserEmail, Set<Survey> surveys) {
+       this.UserFname = UserFname;
+       this.UserLname = UserLname;
+       this.UserEmail = UserEmail;
        this.surveys = surveys;
     }
    
-    public int getUserId() {
+    public Short getUserId() {
         return this.userId;
-    }
+    }       
     
-    public void setUserId(int userId) {
+    public void setUserId(Short userId) {
         this.userId = userId;
     }
     public String getUserFname() {
-        return this.userFname;
+        return this.UserFname;
     }
     
     public void setUserFname(String userFname) {
-        this.userFname = userFname;
+        this.UserFname = userFname;
     }
     public String getUserLname() {
-        return this.userLname;
+        return this.UserLname;
     }
     
     public void setUserLname(String userLname) {
-        this.userLname = userLname;
+        this.UserLname = userLname;
     }
     public String getUserEmail() {
-        return this.userEmail;
+        return this.UserEmail;
     }
     
     public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
+        this.UserEmail = userEmail;
     }
+    
     public Set<Survey> getSurveys() {
         return this.surveys;
     }
