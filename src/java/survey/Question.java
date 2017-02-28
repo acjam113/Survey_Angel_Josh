@@ -20,12 +20,12 @@ public class Question  implements java.io.Serializable {
     }
 
 	
-    public Question(int questionId, Survey survey, String questionText) {
+    public Question(Survey survey, String questionText) {
         this.questionId = questionId;
         this.survey = survey;
         this.questionText = questionText;
     }
-    public Question(int questionId, Survey survey, String questionText, Set<Response> responses) {
+    public Question(Survey survey, String questionText, Set<Response> responses) {
        this.questionId = questionId;
        this.survey = survey;
        this.questionText = questionText;
