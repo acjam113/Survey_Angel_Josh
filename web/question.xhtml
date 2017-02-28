@@ -2,12 +2,35 @@
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-<ui:composition template="template.xhtml">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="template.xhtml">
 
-    <ui:define name="body">
-        
-    </ui:define>
+        <ui:define name="body">
+            <h:form>
+                <h:panelGrid columns="3">
+                    
+                    <h:outputText value="Question Text" />
+                    <h:inputText id="Question_Text" value="#{questionController.questionText}" 
+                                 size="50" maxlength="100" required="true" label="Question Text"/>
+                    <h:message for="Question_Text" style="color: red; font-size: 0.7em" />
 
-</ui:composition>
+                    
+                    
+                     <h:outputText value="Survey" />
+                     <h:selectOneMenu value="#{questionController.survey}">
+                         <f:selectItems value="#{questionController.survey}" var="l" 
+                                       itemLabel="#{l.Survey}" itemValue="#{l.Survey}" />
+                    </h:selectOneMenu>
+                    <h:outputText value =" " />
+
+
+                </h:panelGrid>
+                <h:commandButton id="Submit" value="Submit" action="user" />
+                <h:commandButton value="Clear" type="reset" />
+            </h:form>
+            <h:outputText escape="false" value="#{questionController.response}" />
+        </ui:define>
+
+    </ui:composition>
 </html>
