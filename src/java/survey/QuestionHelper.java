@@ -27,7 +27,7 @@ public class QuestionHelper {
     public int insertQuestion(Question a){
         int result = 0;
         
-        String sql = "insert into question(Question_Text, Survey_Name)"
+        String sql = "insert into question(Question_Text, Survey_ID)"
                 + "values (:question, :survey)";
         
         try{
@@ -43,8 +43,8 @@ public class QuestionHelper {
             q.addEntity(Question.class);
             
             // binds values to the placeholders in the query
-            q.setParameter("Question_Text", a.getQuestionText());
-            q.setParameter("Survey_Name", a.getSurvey());
+            q.setParameter("question", a.getQuestionText());
+            q.setParameter("survey", 1);
             
             // executes the query
             result = q.executeUpdate();

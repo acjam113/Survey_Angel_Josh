@@ -10,6 +10,7 @@
             <h:form>
                 <h:panelGrid columns="3">
                     
+                    <!-- quest...ller.questionText = the value being sent to the jsf managaed bean (question controller)-->
                     <h:outputText value="Question Text" />
                     <h:inputText id="Question_Text" value="#{questionController.questionText}" 
                                  size="50" maxlength="100" required="true" label="Question Text"/>
@@ -17,16 +18,11 @@
 
                     
                     
-                     <h:outputText value="Survey" />
-                     <h:selectOneMenu value="#{questionController.survey}">
-                         <f:selectItems value="#{questionController.survey}" var="l" 
-                                       itemLabel="#{l.Survey}" itemValue="#{l.Survey}" />
-                    </h:selectOneMenu>
-                    <h:outputText value =" " />
+                    
 
 
                 </h:panelGrid>
-                <h:commandButton id="Submit" value="Submit" action="user" />
+                <h:commandButton id="Submit" value="Submit" action="question"/>
                 <h:commandButton value="Clear" type="reset" />
             </h:form>
             <h:outputText escape="false" value="#{questionController.response}" />

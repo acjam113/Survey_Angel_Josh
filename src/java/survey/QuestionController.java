@@ -19,8 +19,9 @@ public class QuestionController implements Serializable {
 
     
     String QuestionText;
-    Survey Survey;
+    int Survey;
     String response;
+    int surveyID;
     /**
      * Creates a new instance of QuestionController
      */
@@ -40,29 +41,31 @@ public class QuestionController implements Serializable {
         this.QuestionText = QuestionText;
     }
 
-    public Survey getSurvey() {
-        return Survey;
+    public int getSurvey() {
+        return surveyID;
     }
 
-    public void setSurvey(Survey Survey) {
-        this.Survey = Survey;
+    public void setSurvey(int surveyID) {
+        this.surveyID = surveyID;
     }
 
       public String getResponse() {
-        
-        if(QuestionText != null && Survey == null){
+          
+        //loops here changing questiontext to "questiontext"1 ""2 "" 3...""10
+        //case blocks would also work for each questiontext
+        if(QuestionText != null && Survey >= 0){
             
             
-            question = new Question(Survey, QuestionText);
+            question = new Question(QuestionText, Survey);
             
             if(helper.insertQuestion(question) == 1){
                 QuestionText = null;
-                Survey= null;
+                Survey = 0;
                 response = "Question Added.";
                 return response;
             }else{
                 QuestionText = null;
-                Survey = null;
+                Survey = 0;
                 response = "Question Not Added.";
                 return response;
             }
@@ -76,6 +79,7 @@ public class QuestionController implements Serializable {
     public void setResponse(String response) {
         this.response = response;
     }
+    
     
     
     
