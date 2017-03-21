@@ -1,6 +1,7 @@
 
 package survey;
 
+import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SQLQuery;
 
@@ -21,14 +22,52 @@ public class surveyHelper {
         }
     }
      
+     public int getUser(){
+        
+        List<User> userList = null;
+        //int result = 0;
+        
+        String sql = "select * from user order by User_ID desc limit 1";
+        
+        try{
+             
+         // if this transaction is not active, make it active
+            if(!this.session.getTransaction().isActive()){
+                session.beginTransaction();
+            }
+            
+            // creating actual query that will be executed against the database
+            SQLQuery q = session.createSQLQuery(sql);
+            
+            // associating the actor table and the actor POJO
+            q.addEntity(User.class);
+            
+            //q.setParameter("userId", a.getUser());
+            // executes the query and returns it as a list
+            userList = (List<User>)q.list();
+            //result = q.executeUpdate();
+            
+                       
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        
+        return userList.get(0).getUserId();
+        //return result;
+    }
+     
      
      
      public int insertSurvey(Survey a){
         int result = 0;
         
-        String sql = "insert into survey(Survey_Name, User_ID)"
-                + "values (:surveyName, :userID)";
         
+        
+        String sql = "insert into survey(Survey_Name, User_ID)"
+                + "value (:surveyName, :userId)";
+        
+        //userId = getUserId();
+
         try{
             // checks to see if the transaction is active
             if(!this.session.getTransaction().isActive()){   
@@ -43,7 +82,7 @@ public class surveyHelper {
             
             // binds values to the placeholders in the query
             q.setParameter("surveyName", a.getSurveyName());
-            q.setParameter("userID", 3);
+            q.setParameter("userId", a.getUser());
            
             // executes the query
             result = q.executeUpdate();

@@ -37,7 +37,8 @@ public class surveyController implements Serializable {
     }
 
     public int getUserID() {
-        return userID;
+        int id = helper.getUser();
+        return id;
     }
 
     public void setUserID(int userID) {
@@ -54,12 +55,12 @@ public class surveyController implements Serializable {
             
             if(helper.insertSurvey(survey) == 1){
                 surveyName = null;
-                userID = userID;
+                userID = 0;
                 response = "User Added.";
               return response;
             }else{
                 surveyName = null;
-                userID = userID;
+                userID = 0;
                 response = "User Not Added.";
                 return response;
             }

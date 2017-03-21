@@ -16,6 +16,7 @@
                     
                     
                 </h:panelGrid>
+                <h:inputHidden id="hidden" value="#{surveyController.userID}" />
                 <h:commandButton id="Submit" value="Submit" action="survey" />
                 <h:commandButton id="Next" value="Next" action="question.xhtml" />
                 <h:commandButton value="Clear" type="reset" />
