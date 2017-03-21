@@ -11,7 +11,7 @@ import java.util.Set;
 public class User  implements java.io.Serializable {
 
 
-     private Short userId;
+     private int userId;
      private String UserFname;
      private String UserLname;
      private String UserEmail;
@@ -33,11 +33,11 @@ public class User  implements java.io.Serializable {
        this.surveys = surveys;
     }
    
-    public Short getUserId() {
+    public int getUserId() {
         return this.userId;
     }       
     
-    public void setUserId(Short userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
     public String getUserFname() {

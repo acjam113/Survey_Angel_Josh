@@ -12,7 +12,7 @@ public class Survey  implements java.io.Serializable {
 
 
      private int surveyId;
-     private User user;
+     private int user;
      private String surveyName;
      private Set<SurveyRespondent> surveyRespondents = new HashSet<SurveyRespondent>(0);
      private Set<Question> questions = new HashSet<Question>(0);
@@ -21,13 +21,11 @@ public class Survey  implements java.io.Serializable {
     }
 
 	
-    public Survey(int surveyId, User user, String surveyName) {
-        this.surveyId = surveyId;
+    public Survey(String surveyName, int user) {
         this.user = user;
         this.surveyName = surveyName;
     }
-    public Survey(int surveyId, User user, String surveyName, Set<SurveyRespondent> surveyRespondents, Set<Question> questions) {
-       this.surveyId = surveyId;
+    public Survey(String surveyName, int user, Set<SurveyRespondent> surveyRespondents, Set<Question> questions) {
        this.user = user;
        this.surveyName = surveyName;
        this.surveyRespondents = surveyRespondents;
@@ -41,11 +39,11 @@ public class Survey  implements java.io.Serializable {
     public void setSurveyId(int surveyId) {
         this.surveyId = surveyId;
     }
-    public User getUser() {
+    public int getUser() {
         return this.user;
     }
     
-    public void setUser(User user) {
+    public void setUser(int user) {
         this.user = user;
     }
     public String getSurveyName() {

@@ -15,6 +15,7 @@ public class UserHelper {
     public UserHelper(){
         try{
             this.session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -39,9 +40,9 @@ public class UserHelper {
             q.addEntity(User.class);
             
             // binds values to the placeholders in the query
-            q.setParameter("User_Fname", a.getUserFname());
-            q.setParameter("User_Lname", a.getUserLname());
-            q.setParameter("User_Email", a.getUserEmail());
+            q.setParameter("fName", a.getUserFname());
+            q.setParameter("lName", a.getUserLname());
+            q.setParameter("email", a.getUserEmail());
             
             // executes the query
             result = q.executeUpdate();

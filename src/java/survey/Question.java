@@ -12,8 +12,9 @@ public class Question  implements java.io.Serializable {
 
 
      private int questionId;
-     private Survey survey;
      private int surveyID;
+     private Survey survey;
+    // private int surveyID;
      private String questionText;
      private Set<Response> responses = new HashSet<Response>(0);
 

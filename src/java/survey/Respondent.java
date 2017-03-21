@@ -19,7 +19,7 @@ public class Respondent  implements java.io.Serializable {
     }
 
 	
-    public Respondent(int respondentId, String respondentEmail) {
+    public Respondent(String respondentEmail) {
         this.respondentId = respondentId;
         this.respondentEmail = respondentEmail;
     }
