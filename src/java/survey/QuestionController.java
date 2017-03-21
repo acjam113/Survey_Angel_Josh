@@ -17,7 +17,6 @@ import java.io.Serializable;
 @SessionScoped
 public class QuestionController implements Serializable {
 
-    
     String questionText;
     String questionText1;
     String questionText2;
@@ -34,10 +33,11 @@ public class QuestionController implements Serializable {
     /**
      * Creates a new instance of QuestionController
      */
-    
+
     QuestionHelper helper;
-    
+
     Question question;
+
     public QuestionController() {
         helper = new QuestionHelper();
     }
@@ -45,8 +45,8 @@ public class QuestionController implements Serializable {
     public String getQuestionText() {
         return questionText;
     }
-    
-     public void setQuestionText(String questionText) {
+
+    public void setQuestionText(String questionText) {
         this.questionText = questionText;
     }
 
@@ -57,8 +57,8 @@ public class QuestionController implements Serializable {
     public void setQuestionText1(String questionText1) {
         this.questionText1 = questionText1;
     }
-    
-        public String getQuestionText2() {
+
+    public String getQuestionText2() {
         return questionText2;
     }
 
@@ -121,11 +121,7 @@ public class QuestionController implements Serializable {
     public void setQuestionText9(String questionText9) {
         this.questionText9 = questionText9;
     }
-    
-    
-    
 
-   
     public int getSurvey() {
         return surveyID;
     }
@@ -134,222 +130,215 @@ public class QuestionController implements Serializable {
         this.surveyID = surveyID;
     }
 
-      public String getResponse() {
-          
+    public String getResponse() {
+    response=null;
         //loops here changing questiontext to "questiontext"1 ""2 "" 3...""10
         //case blocks would also work for each questiontext
-        if(questionText != null && Survey >= 0 && questionText != ""){
-            
-            
+        if (questionText != null && Survey >= 0 && !questionText.isEmpty()) {
+
             question = new Question(questionText, Survey);
-            
-            if(helper.insertQuestion(question) == 1){
+
+            if (helper.insertQuestion(question) == 1) {
                 questionText = null;
                 Survey = 0;
-                response = "Question Added.";
+                response = "1 Question Added.";
                 //return response;
-            }else{
+            }/*else{
                 questionText = null;
                 Survey = 0;
                 response = "Must have at least 1 question!";
-                //return response;
-            }
-        
+               // return response;
+            }*/
+
         }
-       
-         if(questionText1 != null && Survey >= 0 && questionText1 != ""){
-             if (questionText1.isEmpty() == true){
-            questionText1 = null;
-        }
-            
+
+        if (questionText1 != null && Survey >= 0 && !questionText1.isEmpty()) {
+           /* if (questionText1.isEmpty() == true) {
+                questionText1 = null;
+            }*/
+
             question = new Question(questionText1, Survey);
-            
-            if(helper.insertQuestion(question) == 1){
+
+            if (helper.insertQuestion(question) == 1) {
                 questionText1 = null;
                 Survey = 0;
-                response = "Question Added.";
+                response = "2 Questions Added.";
                 //return response;
-            }else{
+            }/*else{
                 questionText1 = null;
-                Survey = 0;
-                response = "1 question added.";
-                //return response;
-            }
-        } 
-        
-         
-        if(questionText2 != null && Survey >= 0 && questionText2 != ""){
-             if (questionText2.isEmpty() == true){
-            questionText2 = null;
-        }
-            
-            question = new Question(questionText2, Survey);
-            
-            if(helper.insertQuestion(question) == 1){
-                questionText2 = null;
-                Survey = 0;
-                response = "Question Added.";
-                //return response;
-            }else{
-                questionText2 = null;
                 Survey = 0;
                 response = "2 questions added.";
                 //return response;
-            }
-        } 
-        
-        
-         if(questionText3 != null && Survey >= 0 && questionText3 != ""){
-            
-             if (questionText3.isEmpty() == true){
-            questionText3 = null;
+            }*/
         }
-            question = new Question(questionText3, Survey);
-            
-            if(helper.insertQuestion(question) == 1){
-                questionText3 = null;
+
+        if (questionText2 != null && Survey >= 0 && !questionText2.isEmpty()) {
+           /* if (questionText2.isEmpty() == true) {
+                questionText2 = null;
+            }*/
+
+            question = new Question(questionText2, Survey);
+
+            if (helper.insertQuestion(question) == 1) {
+                questionText2 = null;
                 Survey = 0;
-                response = "Question Added.";
+                response = "3 Questions Added.";
                 //return response;
-            }else{
-                questionText3 = null;
+            }/*else if (!questionText2.isEmpty()){
+                questionText2 = null;
                 Survey = 0;
                 response = "3 questions added.";
                 //return response;
-            }
-        } 
-         
-          if(questionText4 != null && Survey >= 0 && questionText4 != ""){
-            
-             if (questionText4.isEmpty() == true){
-            questionText4 = null;
+            }*/
         }
-            question = new Question(questionText4, Survey);
-            
-            if(helper.insertQuestion(question) == 1){
-                questionText4 = null;
+
+        if (questionText3 != null && Survey >= 0 && !questionText3.isEmpty()) {
+
+            /*if (questionText3.isEmpty() == true) {
+                questionText3 = null;
+            }*/
+            question = new Question(questionText3, Survey);
+
+            if (helper.insertQuestion(question) == 1) {
+                questionText3 = null;
                 Survey = 0;
-                response = "Question Added.";
-                //return response;
-            }else{
-                questionText4 = null;
+                response = "4 Questions Added.";
+                // return response;
+            }/*else{
+                questionText3 = null;
                 Survey = 0;
                 response = "4 questions added.";
                 //return response;
-            }
-        } 
-          
-           if(questionText5 != null && Survey >= 0 && questionText5 != ""){
-             if (questionText5.isEmpty() == true){
-            questionText5 = null;
+            }*/
         }
-            
-            question = new Question(questionText5, Survey);
-            
-            if(helper.insertQuestion(question) == 1){
-                questionText5 = null;
+
+        if (questionText4 != null && Survey >= 0 && !questionText4.isEmpty()) {
+
+            /* if (questionText4.isEmpty() == true){
+            questionText4 = null;
+        }*/
+            question = new Question(questionText4, Survey);
+
+            if (helper.insertQuestion(question) == 1) {
+                questionText4 = null;
                 Survey = 0;
-                response = "Question Added.";
+                response = "5 Questions Added.";
                 //return response;
-            }else{
-                questionText5 = null;
+            }/*else{
+                questionText4 = null;
                 Survey = 0;
                 response = "5 questions added.";
-                //return response;
-            }
-        } 
-           
-            if(questionText6 != null && Survey >= 0 && questionText6 != ""){
-             if (questionText6.isEmpty() == true){
-            questionText6 = null;
+               // return response;
+            }*/
         }
-            
-            question = new Question(questionText6, Survey);
-            
-            if(helper.insertQuestion(question) == 1){
-                questionText6 = null;
+
+        if (questionText5 != null && Survey >= 0 && !questionText5.isEmpty()) {
+            /*if (questionText5.isEmpty() == true){
+            questionText5 = null;
+        }*/
+
+            question = new Question(questionText5, Survey);
+
+            if (helper.insertQuestion(question) == 1) {
+                questionText5 = null;
                 Survey = 0;
-                response = "Question Added.";
+                response = "6 Questions Added.";
                 //return response;
-            }else{
-                questionText6 = null;
+            }/*else{
+                questionText5 = null;
                 Survey = 0;
                 response = "6 questions added.";
                 //return response;
-            }
-        } 
-            
-             if(questionText7 != null && Survey >= 0 && questionText7 != ""){
-             if (questionText7.isEmpty() == true){
-            questionText7 = null;
+            }*/
         }
-            
-            question = new Question(questionText7, Survey);
-            
-            if(helper.insertQuestion(question) == 1){
-                questionText7 = null;
+
+        if (questionText6 != null && Survey >= 0 && !questionText6.isEmpty()) {
+            /* if (questionText6.isEmpty() == true){
+            questionText6 = null;
+        }*/
+
+            question = new Question(questionText6, Survey);
+
+            if (helper.insertQuestion(question) == 1) {
+                questionText6 = null;
                 Survey = 0;
-                response = "Question Added.";
+                response = "7 Questions Added.";
                 //return response;
-            }else{
-                questionText7 = null;
+            }/*else{
+                questionText6 = null;
                 Survey = 0;
                 response = "7 questions added.";
                 //return response;
-            }
-        } 
-        
-             
-              if(questionText8 != null && Survey >= 0 && questionText8 != ""){
-             if (questionText8.isEmpty() == true){
-            questionText8 = null;
+            }*/
         }
-            
-            question = new Question(questionText8, Survey);
-            
-            if(helper.insertQuestion(question) == 1){
-                questionText8 = null;
+
+        if (questionText7 != null && Survey >= 0 && !questionText7.isEmpty()) {
+            /*if (questionText7.isEmpty() == true){
+            questionText7 = null;
+        }*/
+
+            question = new Question(questionText7, Survey);
+
+            if (helper.insertQuestion(question) == 1) {
+                questionText7 = null;
                 Survey = 0;
-                response = "Question Added.";
+                response = "8 Questions Added.";
                 //return response;
-            }else{
-                questionText8 = null;
+            }/*else{
+                questionText7 = null;
                 Survey = 0;
                 response = "8 questions added.";
                 //return response;
-            }
-        } 
-              
-               if(questionText9 != null && Survey >= 0 && questionText9 != ""){
-             if (questionText9.isEmpty() == true){
-            questionText9 = null;
+            }*/
         }
-            
+
+        if (questionText8 != null && Survey >= 0 && !questionText8.isEmpty()) {
+            /*  if (questionText8.isEmpty() == true){
+            questionText8 = null;
+        }*/
+
+            question = new Question(questionText8, Survey);
+
+            if (helper.insertQuestion(question) == 1) {
+                questionText8 = null;
+                Survey = 0;
+                response = "9 Questions Added.";
+                //return response;
+            }//else{
+            //  questionText8 = null;
+            //Survey = 0;
+            // response = "9 questions added.";
+            //return response;
+            //}
+        }
+
+        if (questionText9 != null && Survey >= 0 && !questionText9.isEmpty()) {
+            //if (questionText9.isEmpty() == true){
+            //questionText9 = null;
+            //}
+
             question = new Question(questionText9, Survey);
-            
-            if(helper.insertQuestion(question) == 1){
+
+            if (helper.insertQuestion(question) == 1) {
                 questionText9 = null;
                 Survey = 0;
-                response = "All questions Added.";
+                response = "All Questions Added.";
                 //return response;
-            }else{
-                questionText9 = null;
-                Survey = 0;
-                response = "All questions added.";
-                //return response;
-            }
+            }//else{
+            //questionText9 = null;
+            // Survey = 0;
+            //response = "All questions Added.";
+            //return response;
+            //}
         } //else {
-           // response = " ";
-           // return response;
-       // }
-               return response;
+        // response = " ";
+        // return response;
+        // }
+        return response;
     }
 
     public void setResponse(String response) {
         this.response = response;
     }
-    
-    
-    
-    
+
 }
