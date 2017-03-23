@@ -48,7 +48,7 @@ public class surveyController implements Serializable {
    
 
     public String getResponse() {
-        
+        response = null;
         if(surveyName != null){
             
             survey = new Survey(surveyName, userID);

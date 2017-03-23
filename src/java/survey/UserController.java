@@ -59,7 +59,7 @@ public class UserController implements Serializable {
     
 
     public String getResponse() {
-        
+        response = null;
         if(UserFname != null && UserLname != null && UserEmail != null){
             
             

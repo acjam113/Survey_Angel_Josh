@@ -96,7 +96,7 @@ public class respondentController implements Serializable {
     
 
     public String getResponse() {
-      
+      response = null;
         if(respondentEmail != null && !respondentEmail.isEmpty()){
             
             respondent = new Respondent(respondentEmail);

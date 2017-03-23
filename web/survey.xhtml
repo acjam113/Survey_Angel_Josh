@@ -9,7 +9,7 @@
         <h:form>
                 <h:panelGrid columns="3">
                     <h:outputText value="Survey Title" />
-                    <h:inputText id="Survey_Name" value="#{surveyController.surveyName}" 
+                    <h:inputText id="Survey_Name" autocomplete="off" value="#{surveyController.surveyName}" 
                          size="50" maxlength="45" required="true" label="Survey Title" />
                     <h:message for="Survey_Name" style="color: red; font-size: 0.7em" />
                     

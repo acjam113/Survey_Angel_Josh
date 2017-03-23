@@ -8,17 +8,17 @@
         <h:form>
                 <h:panelGrid columns="3">
                     <h:outputText value="First Name" />
-                    <h:inputText id="User_Fname" value="#{userController.userFname}" 
+                    <h:inputText id="User_Fname" autocomplete="off" value="#{userController.userFname}" 
                          size="50" maxlength="45" required="true" label="First Name" />
                     <h:message for="User_Fname" style="color: red; font-size: 0.7em" />
                     
                     <h:outputText value="Last Name" />
-                    <h:inputText id="User_Lname" value="#{userController.userLname}" 
+                    <h:inputText id="User_Lname" autocomplete="off" value="#{userController.userLname}" 
                          size="50" maxlength="45" required="true" label="Last Name" />
                     <h:message for="User_Lname" style="color: red; font-size: 0.7em" />
                     
                     <h:outputText value="Email" />
-                    <h:inputText id="User_Email" value="#{userController.userEmail}" 
+                    <h:inputText id="User_Email" autocomplete="off" value="#{userController.userEmail}" 
                          size="50" maxlength="45" required="true" label="Email" />
                     <h:message for="User_Email" style="color: red; font-size: 0.7em" />
                 </h:panelGrid>
