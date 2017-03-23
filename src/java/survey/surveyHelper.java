@@ -25,7 +25,6 @@ public class surveyHelper {
      public int getUser(){
         
         List<User> userList = null;
-        //int result = 0;
         
         String sql = "select * from user order by User_ID desc limit 1";
         
@@ -42,10 +41,8 @@ public class surveyHelper {
             // associating the actor table and the actor POJO
             q.addEntity(User.class);
             
-            //q.setParameter("userId", a.getUser());
             // executes the query and returns it as a list
             userList = (List<User>)q.list();
-            //result = q.executeUpdate();
             
                        
         }catch (Exception e){
@@ -53,7 +50,6 @@ public class surveyHelper {
         }
         
         return userList.get(0).getUserId();
-        //return result;
     }
      
      
@@ -65,8 +61,6 @@ public class surveyHelper {
         
         String sql = "insert into survey(Survey_Name, User_ID)"
                 + "value (:surveyName, :userId)";
-        
-        //userId = getUserId();
 
         try{
             // checks to see if the transaction is active

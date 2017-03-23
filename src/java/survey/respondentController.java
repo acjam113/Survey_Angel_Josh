@@ -20,15 +20,16 @@ public class respondentController implements Serializable {
     String respondentEmail4;
     String response;
     
+    int surveyId;
+    int respondentId;
+    
     respondentHelper helper;
     
     Respondent respondent;
-    Survey survey;
     
     String emailAddress;
     String emailResponse;
     
-    private int respondentId;
     
     public respondentController() {
         helper = new respondentHelper();        
@@ -73,6 +74,24 @@ public class respondentController implements Serializable {
     public void setRespondentEmail4(String respondentEmail4) {
         this.respondentEmail4 = respondentEmail4;
     }
+
+    public int getSurveyId() {
+        int id = helper.getSurveyId();
+        return id;
+    }
+
+    public void setSurveyId(int surveyId) {
+        this.surveyId = surveyId;
+    }
+
+    public int getRespondentId() {
+        int id = helper.getRespondentId();
+        return id;
+    }
+
+    public void setRespondentId(int respondentId) {
+        this.respondentId = respondentId;
+    }
     
     
 
@@ -93,7 +112,7 @@ public class respondentController implements Serializable {
         
         if(respondentEmail1 != null && !respondentEmail1.isEmpty()){
             
-            respondent = new Respondent(respondentEmail1);
+            respondent = new Respondent(respondentEmail);
             
             if(respondentEmail1.isEmpty() == true){
                 respondentEmail1 = null;
@@ -114,7 +133,7 @@ public class respondentController implements Serializable {
                 respondentEmail2 = null;
             }
             
-            respondent = new Respondent(respondentEmail2);
+            respondent = new Respondent(respondentEmail);
             
             if(helper.insertRespondent(respondent) == 1){
                 respondentEmail2 = null;
@@ -131,7 +150,7 @@ public class respondentController implements Serializable {
                 respondentEmail3 = null;
             }
             
-            respondent = new Respondent(respondentEmail3);
+            respondent = new Respondent(respondentEmail);
             
             if(helper.insertRespondent(respondent) == 1){
                 respondentEmail3 = null;
@@ -149,7 +168,7 @@ public class respondentController implements Serializable {
                 respondentEmail4 = null;
             }
             
-            respondent = new Respondent(respondentEmail4);
+            respondent = new Respondent(respondentEmail);
             
             if(helper.insertRespondent(respondent) == 1){
                 respondentEmail4 = null;

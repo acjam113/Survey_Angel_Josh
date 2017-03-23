@@ -56,12 +56,12 @@ public class surveyController implements Serializable {
             if(helper.insertSurvey(survey) == 1){
                 surveyName = null;
                 userID = 0;
-                response = "User Added.";
+                response = "Survey Title Added.";
               return response;
             }else{
                 surveyName = null;
                 userID = 0;
-                response = "User Not Added.";
+                response = "Survey Title Not Added.";
                 return response;
             }
         } else {
