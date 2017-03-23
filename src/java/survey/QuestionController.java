@@ -129,6 +129,15 @@ public class QuestionController implements Serializable {
     public void setSurvey(int surveyID) {
         this.surveyID = surveyID;
     }
+    
+     public int getSurveyID() {
+        int id = helper.getSurvey();
+        return id;
+    }
+
+    public void setSurveyID(int Survey_ID) {
+        this.Survey = Survey_ID;
+    }
 
     public String getResponse() {
     response=null;

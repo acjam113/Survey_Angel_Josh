@@ -5,6 +5,7 @@
  */
 package survey;
 
+import java.util.List;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 
@@ -22,6 +23,40 @@ public class QuestionHelper {
         } catch (Exception e){
             e.printStackTrace();
         }
+    }
+    
+     public int getSurvey(){
+        
+        List<Survey> surveyList = null;
+        //int result = 0;
+        
+        String sql = "select * from survey order by Survey_ID desc limit 1";
+        
+        try{
+             
+         // if this transaction is not active, make it active
+            if(!this.session.getTransaction().isActive()){
+                session.beginTransaction();
+            }
+            
+            // creating actual query that will be executed against the database
+            SQLQuery q = session.createSQLQuery(sql);
+            
+            // associating the actor table and the actor POJO
+            q.addEntity(Question.class);
+            
+            //q.setParameter("userId", a.getUser());
+            // executes the query and returns it as a list
+            surveyList = (List<Survey>)q.list();
+            //result = q.executeUpdate();
+            
+                       
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        
+        return surveyList.get(0).getSurveyId();
+        //return result;
     }
     
     public int insertQuestion(Question a){
@@ -44,6 +79,7 @@ public class QuestionHelper {
             
             // binds values to the placeholders in the query
             q.setParameter("question", a.getQuestionText());
+            //q.setParameter("survey", a.getSurvey());
             q.setParameter("survey", 1);
             
             // executes the query
