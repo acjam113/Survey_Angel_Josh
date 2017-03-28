@@ -27,9 +27,9 @@ public class QuestionController implements Serializable {
     String questionText7;
     String questionText8;
     String questionText9;
-    int Survey;
-    String response;
     int surveyID;
+    String response;
+    //int surveyID;
     /**
      * Creates a new instance of QuestionController
      */
@@ -129,27 +129,41 @@ public class QuestionController implements Serializable {
     public void setSurvey(int surveyID) {
         this.surveyID = surveyID;
     }
+
+    public int getSurveyID() {
+        return surveyID;
+    }
+
+    public void setSurveyID(int surveyID) {
+        this.surveyID = surveyID;
+    }
     
-     public int getSurveyID() {
-        int id = helper.getSurvey();
-        return id;
-    }
+  
 
-    public void setSurveyID(int Survey_ID) {
-        this.Survey = Survey_ID;
+    
+    public String getQuestions(int SurveyIdArg){
+        surveyID = SurveyIdArg;
+        return "question";
     }
-
+    
+    
+    //create emthod that tales survbey id takes the parameter and assigns it to the survey id field then retruns a string named question to display the page--done
+    //it sets the value so it can be use in get resposne -- done
     public String getResponse() {
     response=null;
+    
+    surveyID=getSurveyID();
+    
+    
         //loops here changing questiontext to "questiontext"1 ""2 "" 3...""10
         //case blocks would also work for each questiontext
-        if (questionText != null && Survey >= 0 && !questionText.isEmpty()) {
+        if (questionText != null && surveyID >= 0 && !questionText.isEmpty()) {
 
-            question = new Question(questionText, Survey);
+            question = new Question(questionText, surveyID);
 
             if (helper.insertQuestion(question) == 1) {
                 questionText = null;
-                Survey = 0;
+                //surveyID = 0;
                 response = "1 Question Added.";
                 //return response;
             }/*else{
@@ -158,19 +172,19 @@ public class QuestionController implements Serializable {
                 response = "Must have at least 1 question!";
                // return response;
             }*/
-
+               // surveyID = helper.getSurvey();
         }
 
-        if (questionText1 != null && Survey >= 0 && !questionText1.isEmpty()) {
+        if (questionText1 != null && surveyID >= 0 && !questionText1.isEmpty()) {
            /* if (questionText1.isEmpty() == true) {
                 questionText1 = null;
             }*/
 
-            question = new Question(questionText1, Survey);
+            question = new Question(questionText1, surveyID);
 
             if (helper.insertQuestion(question) == 1) {
                 questionText1 = null;
-                Survey = 0;
+                //surveyID = 0;
                 response = "2 Questions Added.";
                 //return response;
             }/*else{
@@ -181,16 +195,16 @@ public class QuestionController implements Serializable {
             }*/
         }
 
-        if (questionText2 != null && Survey >= 0 && !questionText2.isEmpty()) {
+        if (questionText2 != null && surveyID >= 0 && !questionText2.isEmpty()) {
            /* if (questionText2.isEmpty() == true) {
                 questionText2 = null;
             }*/
 
-            question = new Question(questionText2, Survey);
+            question = new Question(questionText2, surveyID);
 
             if (helper.insertQuestion(question) == 1) {
                 questionText2 = null;
-                Survey = 0;
+                //surveyID = 0;
                 response = "3 Questions Added.";
                 //return response;
             }/*else if (!questionText2.isEmpty()){
@@ -201,16 +215,16 @@ public class QuestionController implements Serializable {
             }*/
         }
 
-        if (questionText3 != null && Survey >= 0 && !questionText3.isEmpty()) {
+        if (questionText3 != null && surveyID >= 0 && !questionText3.isEmpty()) {
 
             /*if (questionText3.isEmpty() == true) {
                 questionText3 = null;
             }*/
-            question = new Question(questionText3, Survey);
+            question = new Question(questionText3, surveyID);
 
             if (helper.insertQuestion(question) == 1) {
                 questionText3 = null;
-                Survey = 0;
+                //surveyID = 0;
                 response = "4 Questions Added.";
                 // return response;
             }/*else{
@@ -221,16 +235,16 @@ public class QuestionController implements Serializable {
             }*/
         }
 
-        if (questionText4 != null && Survey >= 0 && !questionText4.isEmpty()) {
+        if (questionText4 != null && surveyID >= 0 && !questionText4.isEmpty()) {
 
             /* if (questionText4.isEmpty() == true){
             questionText4 = null;
         }*/
-            question = new Question(questionText4, Survey);
+            question = new Question(questionText4, surveyID);
 
             if (helper.insertQuestion(question) == 1) {
                 questionText4 = null;
-                Survey = 0;
+                //surveyID = 0;
                 response = "5 Questions Added.";
                 //return response;
             }/*else{
@@ -241,16 +255,16 @@ public class QuestionController implements Serializable {
             }*/
         }
 
-        if (questionText5 != null && Survey >= 0 && !questionText5.isEmpty()) {
+        if (questionText5 != null && surveyID >= 0 && !questionText5.isEmpty()) {
             /*if (questionText5.isEmpty() == true){
             questionText5 = null;
         }*/
 
-            question = new Question(questionText5, Survey);
+            question = new Question(questionText5, surveyID);
 
             if (helper.insertQuestion(question) == 1) {
                 questionText5 = null;
-                Survey = 0;
+                //surveyID = 0;
                 response = "6 Questions Added.";
                 //return response;
             }/*else{
@@ -261,16 +275,16 @@ public class QuestionController implements Serializable {
             }*/
         }
 
-        if (questionText6 != null && Survey >= 0 && !questionText6.isEmpty()) {
+        if (questionText6 != null && surveyID >= 0 && !questionText6.isEmpty()) {
             /* if (questionText6.isEmpty() == true){
             questionText6 = null;
         }*/
 
-            question = new Question(questionText6, Survey);
+            question = new Question(questionText6, surveyID);
 
             if (helper.insertQuestion(question) == 1) {
                 questionText6 = null;
-                Survey = 0;
+                //surveyID = 0;
                 response = "7 Questions Added.";
                 //return response;
             }/*else{
@@ -281,16 +295,16 @@ public class QuestionController implements Serializable {
             }*/
         }
 
-        if (questionText7 != null && Survey >= 0 && !questionText7.isEmpty()) {
+        if (questionText7 != null && surveyID >= 0 && !questionText7.isEmpty()) {
             /*if (questionText7.isEmpty() == true){
             questionText7 = null;
         }*/
 
-            question = new Question(questionText7, Survey);
+            question = new Question(questionText7, surveyID);
 
             if (helper.insertQuestion(question) == 1) {
                 questionText7 = null;
-                Survey = 0;
+                //surveyID = 0;
                 response = "8 Questions Added.";
                 //return response;
             }/*else{
@@ -301,16 +315,16 @@ public class QuestionController implements Serializable {
             }*/
         }
 
-        if (questionText8 != null && Survey >= 0 && !questionText8.isEmpty()) {
+        if (questionText8 != null && surveyID >= 0 && !questionText8.isEmpty()) {
             /*  if (questionText8.isEmpty() == true){
             questionText8 = null;
         }*/
 
-            question = new Question(questionText8, Survey);
+            question = new Question(questionText8, surveyID);
 
             if (helper.insertQuestion(question) == 1) {
                 questionText8 = null;
-                Survey = 0;
+                //surveyID = 0;
                 response = "9 Questions Added.";
                 //return response;
             }//else{
@@ -321,16 +335,16 @@ public class QuestionController implements Serializable {
             //}
         }
 
-        if (questionText9 != null && Survey >= 0 && !questionText9.isEmpty()) {
+        if (questionText9 != null && surveyID >= 0 && !questionText9.isEmpty()) {
             //if (questionText9.isEmpty() == true){
             //questionText9 = null;
             //}
 
-            question = new Question(questionText9, Survey);
+            question = new Question(questionText9, surveyID);
 
             if (helper.insertQuestion(question) == 1) {
                 questionText9 = null;
-                Survey = 0;
+                //surveyID = 0;
                 response = "All Questions Added.";
                 //return response;
             }//else{

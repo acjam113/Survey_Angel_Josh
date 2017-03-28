@@ -18,7 +18,8 @@
                 </h:panelGrid>
                 <h:inputHidden id="hidden" value="#{surveyController.userID}" />
                 <h:commandButton id="Submit" value="Submit" action="survey" />
-                <h:commandButton id="Next" value="Next" action="question.xhtml" />
+                <h:commandButton id="Next" value="Next" action="#{questionController.getQuestions(surveyController.surveyID)}" /> 
+                <!--//call method in question controller that takes a survey // calls method in controller that takes the survey id thats a field in the survey controller-->
                 <h:commandButton value="Clear" type="reset" />
             </h:form>
             <h:outputText escape="false" value="#{surveyController.response}" />

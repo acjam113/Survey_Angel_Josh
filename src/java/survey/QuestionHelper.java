@@ -25,7 +25,9 @@ public class QuestionHelper {
         }
     }
     
-     public int getSurvey(){
+    
+    //put in survey helper--done
+    /* public int getSurvey(){
         
         List<Survey> surveyList = null;
         //int result = 0;
@@ -57,7 +59,7 @@ public class QuestionHelper {
         
         return surveyList.get(0).getSurveyId();
         //return result;
-    }
+    }*/
     
     public int insertQuestion(Question a){
         int result = 0;
@@ -80,7 +82,7 @@ public class QuestionHelper {
             // binds values to the placeholders in the query
             q.setParameter("question", a.getQuestionText());
             //q.setParameter("survey", a.getSurvey());
-            q.setParameter("survey", 1);
+            q.setParameter("survey", a.getSurvey());
             
             // executes the query
             result = q.executeUpdate();
