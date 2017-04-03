@@ -36,9 +36,10 @@ public class surveyController implements Serializable {
         this.surveyName = surveyName;
     }
 
+    //find a way to call this only when it needs to be called
     public int getUserID() {
-        int id = helper.getUser();
-        return id;
+       // int id = helper.getUser();
+        return userID;
     }
 
     public void setUserID(int userID) {
@@ -65,7 +66,7 @@ public class surveyController implements Serializable {
         response = null;
         if(surveyName != null){
             
-            survey = new Survey(surveyName, userID);
+            survey = new Survey(surveyName, helper.getUser());
             
             if(helper.insertSurvey(survey) == 1){
                 //get the survey id here and assign it to survey id--done

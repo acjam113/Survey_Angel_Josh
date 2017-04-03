@@ -43,9 +43,15 @@ public class Survey  implements java.io.Serializable {
         return this.user;
     }
     
-    public void setUser(int user) {
+    /*public void setUser(int user) {
         this.user = user;
+    }*/
+    
+    public void setUser(User user){
+        this.user = user.getUserId();
     }
+    
+    
     public String getSurveyName() {
         return this.surveyName;
     }

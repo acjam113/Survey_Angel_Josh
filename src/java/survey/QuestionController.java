@@ -29,6 +29,7 @@ public class QuestionController implements Serializable {
     String questionText9;
     int surveyID;
     String response;
+    int SurveyIdArg;
     //int surveyID;
     /**
      * Creates a new instance of QuestionController
@@ -141,8 +142,8 @@ public class QuestionController implements Serializable {
   
 
     
-    public String getQuestions(int SurveyIdArg){
-        surveyID = SurveyIdArg;
+    public String getQuestions(int woah){
+        surveyID = woah;
         return "question";
     }
     
@@ -151,18 +152,20 @@ public class QuestionController implements Serializable {
     //it sets the value so it can be use in get resposne -- done
     public String getResponse() {
     response=null;
-    
-    surveyID=getSurveyID();
-    
+   // surveyID = 
+   // surveyID=getSurveyID();
+    //surveyID = getSurvey();
     
         //loops here changing questiontext to "questiontext"1 ""2 "" 3...""10
         //case blocks would also work for each questiontext
         if (questionText != null && surveyID >= 0 && !questionText.isEmpty()) {
 
+            getSurveyID();
             question = new Question(questionText, surveyID);
 
-            if (helper.insertQuestion(question) == 1) {
+            if (helper.insertQuestion(questionText, surveyID) == 1) {
                 questionText = null;
+                surveyID = getSurveyID();
                 //surveyID = 0;
                 response = "1 Question Added.";
                 //return response;
@@ -182,8 +185,9 @@ public class QuestionController implements Serializable {
 
             question = new Question(questionText1, surveyID);
 
-            if (helper.insertQuestion(question) == 1) {
+           if (helper.insertQuestion(questionText1, surveyID) == 1) {
                 questionText1 = null;
+                surveyID = getSurveyID();
                 //surveyID = 0;
                 response = "2 Questions Added.";
                 //return response;
@@ -202,8 +206,9 @@ public class QuestionController implements Serializable {
 
             question = new Question(questionText2, surveyID);
 
-            if (helper.insertQuestion(question) == 1) {
+            if (helper.insertQuestion(questionText2, surveyID) == 1) {
                 questionText2 = null;
+                surveyID = getSurveyID();
                 //surveyID = 0;
                 response = "3 Questions Added.";
                 //return response;
@@ -222,8 +227,9 @@ public class QuestionController implements Serializable {
             }*/
             question = new Question(questionText3, surveyID);
 
-            if (helper.insertQuestion(question) == 1) {
+            if (helper.insertQuestion(questionText3, surveyID) == 1) {
                 questionText3 = null;
+                surveyID = getSurveyID();
                 //surveyID = 0;
                 response = "4 Questions Added.";
                 // return response;
@@ -242,8 +248,9 @@ public class QuestionController implements Serializable {
         }*/
             question = new Question(questionText4, surveyID);
 
-            if (helper.insertQuestion(question) == 1) {
+           if (helper.insertQuestion(questionText4, surveyID) == 1) {
                 questionText4 = null;
+                surveyID = getSurveyID();
                 //surveyID = 0;
                 response = "5 Questions Added.";
                 //return response;
@@ -262,8 +269,9 @@ public class QuestionController implements Serializable {
 
             question = new Question(questionText5, surveyID);
 
-            if (helper.insertQuestion(question) == 1) {
+           if (helper.insertQuestion(questionText5, surveyID) == 1) {
                 questionText5 = null;
+                surveyID = getSurveyID();
                 //surveyID = 0;
                 response = "6 Questions Added.";
                 //return response;
@@ -282,8 +290,9 @@ public class QuestionController implements Serializable {
 
             question = new Question(questionText6, surveyID);
 
-            if (helper.insertQuestion(question) == 1) {
+            if (helper.insertQuestion(questionText6, surveyID) == 1) {
                 questionText6 = null;
+                surveyID = getSurveyID();
                 //surveyID = 0;
                 response = "7 Questions Added.";
                 //return response;
@@ -302,8 +311,9 @@ public class QuestionController implements Serializable {
 
             question = new Question(questionText7, surveyID);
 
-            if (helper.insertQuestion(question) == 1) {
+            if (helper.insertQuestion(questionText7, surveyID) == 1) {
                 questionText7 = null;
+                surveyID = getSurveyID();
                 //surveyID = 0;
                 response = "8 Questions Added.";
                 //return response;
@@ -322,8 +332,9 @@ public class QuestionController implements Serializable {
 
             question = new Question(questionText8, surveyID);
 
-            if (helper.insertQuestion(question) == 1) {
+           if (helper.insertQuestion(questionText8, surveyID) == 1) {
                 questionText8 = null;
+                surveyID = getSurveyID();
                 //surveyID = 0;
                 response = "9 Questions Added.";
                 //return response;
@@ -342,8 +353,9 @@ public class QuestionController implements Serializable {
 
             question = new Question(questionText9, surveyID);
 
-            if (helper.insertQuestion(question) == 1) {
+            if (helper.insertQuestion(questionText9, surveyID) == 1) {
                 questionText9 = null;
+                surveyID = getSurveyID();
                 //surveyID = 0;
                 response = "All Questions Added.";
                 //return response;

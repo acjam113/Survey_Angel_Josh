@@ -61,7 +61,7 @@ public class QuestionHelper {
         //return result;
     }*/
     
-    public int insertQuestion(Question a){
+    public int insertQuestion(String questionText, int surveyID){
         int result = 0;
         
         String sql = "insert into question(Question_Text, Survey_ID)"
@@ -80,9 +80,9 @@ public class QuestionHelper {
             q.addEntity(Question.class);
             
             // binds values to the placeholders in the query
-            q.setParameter("question", a.getQuestionText());
+            q.setParameter("question", questionText);
             //q.setParameter("survey", a.getSurvey());
-            q.setParameter("survey", a.getSurvey());
+            q.setParameter("survey", surveyID);
             
             // executes the query
             result = q.executeUpdate();
