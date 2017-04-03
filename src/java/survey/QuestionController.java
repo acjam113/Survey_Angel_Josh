@@ -142,8 +142,8 @@ public class QuestionController implements Serializable {
   
 
     
-    public String getQuestions(int woah){
-        surveyID = woah;
+    public String getQuestions(int IDArg){
+        surveyID = IDArg;
         return "question";
     }
     
@@ -369,6 +369,7 @@ public class QuestionController implements Serializable {
         // response = " ";
         // return response;
         // }
+        
         return response;
     }
 

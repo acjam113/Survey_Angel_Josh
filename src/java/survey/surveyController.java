@@ -1,4 +1,3 @@
-
 package survey;
 
 import javax.inject.Named;
@@ -12,20 +11,20 @@ import java.io.Serializable;
 @Named(value = "surveyController")
 @SessionScoped
 public class surveyController implements Serializable {
-    
+
     String surveyName;
     int userID;
     String response;
-       int surveyID;
+    int surveyID;
     surveyHelper helper;
-    
+
     Survey survey;
 
     /**
      * Creates a new instance of surveyTitleController
      */
     public surveyController() {
-         helper = new surveyHelper();
+        helper = new surveyHelper();
     }
 
     public String getSurveyName() {
@@ -38,7 +37,11 @@ public class surveyController implements Serializable {
 
     //find a way to call this only when it needs to be called
     public int getUserID() {
-       // int id = helper.getUser();
+        if (userID != 0) {
+            return userID;
+        } else {
+            userID = helper.getUser();
+        }
         return userID;
     }
 
@@ -46,10 +49,7 @@ public class surveyController implements Serializable {
         this.userID = userID;
     }
 
-   
-    
     //remake the getters and setter--done
-
     public int getSurveyID() {
         return surveyID;
     }
@@ -57,18 +57,14 @@ public class surveyController implements Serializable {
     public void setSurveyID(int surveyID) {
         this.surveyID = surveyID;
     }
-    
-    
-
-   
 
     public String getResponse() {
         response = null;
-        if(surveyName != null){
-            
-            survey = new Survey(surveyName, helper.getUser());
-            
-            if(helper.insertSurvey(survey) == 1){
+        if (surveyName != null) {
+
+            survey = new Survey(surveyName, getUserID());
+
+            if (helper.insertSurvey(survey) == 1) {
                 //get the survey id here and assign it to survey id--done
                 //call helper method to get survey id that gets the survey id for the survey that was just inserted--done
                 //surveyName = null;
@@ -76,8 +72,8 @@ public class surveyController implements Serializable {
                 surveyID = helper.getSurveyID();
                 //userID = 0; take these set to zeros out--done
                 response = "Survey Title Added.";
-              return response;
-            }else{
+                return response;
+            } else {
                 //surveyName = null;
                 //userID = 0;
                 response = "Survey Title Not Added.";
@@ -92,5 +88,5 @@ public class surveyController implements Serializable {
     public void setResponse(String response) {
         this.response = response;
     }
-            
+
 }
