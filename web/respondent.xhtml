@@ -35,6 +35,7 @@
                 </h:panelGrid>
 
                 <h:commandButton id="Submit" value="Submit" onclick="reset" action="respondent" />
+                <h:commandButton id="Next" value="Next" onclick="#{questionController.clear()}" action="respondent.xhtml" />
                 <h:commandButton value="Clear" type="reset" />
             </h:form>
             <h:outputText escape="false" value="#{respondentController.response}" />

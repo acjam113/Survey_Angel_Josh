@@ -15,10 +15,10 @@ import java.io.Serializable;
 public class UserController implements Serializable {
 
     
-    String UserFname;
-    String UserLname;
-    String UserEmail;
-    String response;
+    String UserFname = null;
+    String UserLname=null;
+    String UserEmail=null;
+    String response=null;
     
     // this class uses hibernate to query the user table
     UserHelper helper;
@@ -55,11 +55,24 @@ public class UserController implements Serializable {
     public void setUserEmail(String UserEmail) {
         this.UserEmail = UserEmail;
     }
+    public void clear(){
+        UserEmail=null;
+        UserFname=null;
+        UserLname=null;
+    }
 
     
 
     public String getResponse() {
         response = null;
+        //if(!UserFname.isEmpty() || !UserLname.isEmpty() || !UserEmail.isEmpty()){
+            //UserFname = null;
+                //UserLname = null;
+                //UserEmail = null;
+                //response=null;
+                //return response;
+                
+        //}
         if(UserFname != null && UserLname != null && UserEmail != null){
             
             
@@ -70,19 +83,20 @@ public class UserController implements Serializable {
                 UserLname = null;
                 UserEmail = null;
                 response = "User Added.";
-                return response;
+               // return response;
             }else{
                 UserFname = null;
                 UserLname = null;
                 UserEmail = null;
                 response = "User Not Added.";
-                return response;
+               // return response;
             }
         } else {
             response = " ";
-            return response;
+           // return response;
         }
         
+        return response;
     }
 
     public void setResponse(String response) {

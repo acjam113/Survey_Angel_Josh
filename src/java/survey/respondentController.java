@@ -178,6 +178,28 @@ public class respondentController implements Serializable {
                 response = "Five Respondents Were Not Added.";
             }
         } 
+        surveyController surveyController = new surveyController();
+        UserController UserController = new UserController();
+        QuestionController QuestionController = new QuestionController();
+        /*surveyController.userID=0;
+        surveyController.surveyID=0;
+        surveyController.response=null;
+        surveyController.surveyName=null;
+        UserController.UserEmail=null;
+        UserController.UserFname=null;
+        UserController.UserLname=null;
+        UserController.response=null;
+        QuestionController.surveyID=0;*/
+        
+       /*surveyController.setSurveyID(0);
+        surveyController.setSurveyName(null);
+        surveyController.setUserID(0);
+        surveyController.setResponse(null);
+        UserController.setUserEmail(null);
+        UserController.setResponse(null);
+        UserController.setUserFname(null);
+        UserController.setUserLname(null);
+        QuestionController.setSurveyID(0);*/
      return response;
     }
 

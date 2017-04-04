@@ -9,6 +9,7 @@
     <ui:define name="body">
         <h:form>
                 <h:panelGrid columns="3">
+                     
                    
                     
                     <h:outputText value="Question 1" />
@@ -71,7 +72,7 @@
             
            <!-- //the question controller will now have the survey id to insert into the database done-->
                         <h:commandButton id="Submit" value="Submit" onclick="reset" action="question" />
-                        <h:commandButton id="Next" value="Next" action="respondent.xhtml" />
+                        <h:commandButton id="Next" value="Next" onclick="#{surveyController.clear()}" action="respondent.xhtml" />
                         <h:commandButton value="Clear" type="reset" />
         </h:form>
         <h:outputText escape="false" value="#{questionController.response}" />

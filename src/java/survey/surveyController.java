@@ -44,6 +44,12 @@ public class surveyController implements Serializable {
         }
         return userID;
     }
+    
+     public void clear(){
+        //userID=0;
+        surveyName=null;
+        
+    }
 
     public void setUserID(int userID) {
         this.userID = userID;
@@ -62,27 +68,31 @@ public class surveyController implements Serializable {
         response = null;
         if (surveyName != null) {
 
-            survey = new Survey(surveyName, getUserID());
+           // survey = new Survey(surveyName, getUserID());
+           survey = new Survey(getSurveyName(), getUserID());
 
             if (helper.insertSurvey(survey) == 1) {
                 //get the survey id here and assign it to survey id--done
                 //call helper method to get survey id that gets the survey id for the survey that was just inserted--done
-                //surveyName = null;
+                surveyName = null;
                 //set survey id = call method you moved into survey helper-done
                 surveyID = helper.getSurveyID();
-                //userID = 0; take these set to zeros out--done
+               // userID = 0; //take these set to zeros out--done
+                //surveyID=0; //this may cause an insertion failure
                 response = "Survey Title Added.";
-                return response;
+                //return response;
             } else {
-                //surveyName = null;
+                surveyName = null;
                 //userID = 0;
+                //surveyID=0;
                 response = "Survey Title Not Added.";
-                return response;
+                //return response;
             }
         } else {
             response = " ";
-            return response;
+            //return response;
         }
+        return response;
     }
 
     public void setResponse(String response) {
