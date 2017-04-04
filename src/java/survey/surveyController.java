@@ -15,8 +15,12 @@ public class surveyController implements Serializable {
     
     String surveyName;
     int userID;
-    String response;
+    int getUserId;
+    int surveyID;
     
+    
+    String response;
+     
     surveyHelper helper;
     
     Survey survey;
@@ -37,13 +41,23 @@ public class surveyController implements Serializable {
     }
 
     public int getUserID() {
-        int id = helper.getUser();
-        return id;
+        return userID;
     }
 
     public void setUserID(int userID) {
         this.userID = userID;
     }
+
+    public int getSurveyID() {
+        return surveyID;
+    }
+
+    public void setSurveyID(int surveyID) {
+        this.surveyID = surveyID;
+        //reset getters and settera
+    }
+    
+    
 
    
 
@@ -53,14 +67,18 @@ public class surveyController implements Serializable {
             
             survey = new Survey(surveyName, userID);
             
-            if(helper.insertSurvey(survey) == 1){
+            
+            userID = helper.getUser();
+            if(helper.insertSurvey(surveyName, userID) == 1){
                 surveyName = null;
-                userID = 0;
+                //aet survey id = cll method you moved to survyehelper
+                surveyID = helper.getSurveyId();
+                //userID = 0;
                 response = "Survey Title Added.";
               return response;
             }else{
                 surveyName = null;
-                userID = 0;
+                //userID = 0;
                 response = "Survey Title Not Added.";
                 return response;
             }
@@ -75,3 +93,4 @@ public class surveyController implements Serializable {
     }
             
 }
+

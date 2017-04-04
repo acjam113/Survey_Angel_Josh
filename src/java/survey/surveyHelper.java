@@ -53,14 +53,43 @@ public class surveyHelper {
     }
      
      
-     
-     public int insertSurvey(Survey a){
+     public int getSurveyId(){
+        
+        List<Survey> surveyList = null;
+        
+        String sql = "select * from survey order by Survey_ID desc limit 1";
+        
+        try{
+             
+         // if this transaction is not active, make it active
+            if(!this.session.getTransaction().isActive()){
+                session.beginTransaction();
+            }
+            
+            // creating actual query that will be executed against the database
+            SQLQuery q = session.createSQLQuery(sql);
+            
+            // associating the actor table and the actor POJO
+            q.addEntity(Survey.class);
+            
+            // executes the query and returns it as a list
+            surveyList = (List<Survey>)q.list();
+            
+                       
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        
+        return surveyList.get(0).getSurveyId();
+    }
+
+     public int insertSurvey(String surveyName, int user){
         int result = 0;
         
-        
+        user = getUser();
         
         String sql = "insert into survey(Survey_Name, User_ID)"
-                + "value (:surveyName, :userId)";
+                + "values (:surveyName, :userId)";
 
         try{
             // checks to see if the transaction is active
@@ -75,8 +104,8 @@ public class surveyHelper {
             q.addEntity(Survey.class);
             
             // binds values to the placeholders in the query
-            q.setParameter("surveyName", a.getSurveyName());
-            q.setParameter("userId", a.getUser());
+            q.setParameter("surveyName", surveyName);
+            q.setParameter("userId", user);
            
             // executes the query
             result = q.executeUpdate();
@@ -90,6 +119,5 @@ public class surveyHelper {
         }
         
         return result;
-     }
-    
+     }  
 }

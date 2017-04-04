@@ -5,6 +5,7 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 
+
 /**
  *
  * @author Angel
@@ -22,13 +23,14 @@ public class respondentController implements Serializable {
     
     int surveyId;
     int respondentId;
+    int surveyIdArg;
     
     respondentHelper helper;
     
     Respondent respondent;
+    Survey survey;
     
     String emailAddress;
-    String emailResponse;
     
     
     public respondentController() {
@@ -75,37 +77,54 @@ public class respondentController implements Serializable {
         this.respondentEmail4 = respondentEmail4;
     }
 
+    
     public int getSurveyId() {
-        int id = helper.getSurveyId();
-        return id;
+        return surveyId;
     }
 
     public void setSurveyId(int surveyId) {
         this.surveyId = surveyId;
     }
-
+    
+     public String getSurveyIds(int surveyIdArg){
+        surveyId = surveyIdArg;
+        return "respondent";
+    }
+   
     public int getRespondentId() {
-        int id = helper.getRespondentId();
-        return id;
+        return respondentId;
     }
 
     public void setRespondentId(int respondentId) {
         this.respondentId = respondentId;
     }
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
+
     
     
 
     public String getResponse() {
-      response = null;
-        if(respondentEmail != null && !respondentEmail.isEmpty()){
+        
+        response = null;
+        
+        if(respondentEmail != null  && !respondentEmail.isEmpty()){
             
             respondent = new Respondent(respondentEmail);
             
-            if(helper.insertRespondent(respondent) == 1){
+            if(helper.insert(respondentEmail, surveyId)== 1){
                 respondentEmail = null;
+                surveyId = getSurveyId();
                 response = "A Respondent Was Added.";
             }else{
                 respondentEmail = null;
+                surveyId = getSurveyId();
                 response = "A Respondent Was Not Added.";
             }
         }
@@ -114,67 +133,62 @@ public class respondentController implements Serializable {
             
             respondent = new Respondent(respondentEmail);
             
-            if(respondentEmail1.isEmpty() == true){
-                respondentEmail1 = null;
-            }
-            
-            if(helper.insertRespondent(respondent) == 1){
-                respondentEmail1 = null;
+
+            if(helper.insert(respondentEmail1, surveyId)== 1){
+                respondentEmail1 = null;                
+                surveyId = getSurveyId();
                 response = "Two Respondents Were Added.";
             }else{
                 respondentEmail1 = null;
+                surveyId = getSurveyId();
                 response = "Two Respondents Were Not Added.";
             }
         }    
         
         if(respondentEmail2 != null && !respondentEmail2.isEmpty()){
             
-            if(respondentEmail2.isEmpty() == true){
-                respondentEmail2 = null;
-            }
-            
             respondent = new Respondent(respondentEmail);
             
-            if(helper.insertRespondent(respondent) == 1){
+ 
+            if(helper.insert(respondentEmail2, surveyId)== 1){
                 respondentEmail2 = null;
+                surveyId = getSurveyId();
                 response = "Three Respondents Were Added.";
             }else{
                 respondentEmail2 = null;
+                surveyId = getSurveyId();
                 response = "Three Respondents Were Not Added.";
             }
         }
         
         if(respondentEmail3 != null && !respondentEmail3.isEmpty()){
             
-            if(respondentEmail3.isEmpty() == true){
-                respondentEmail3 = null;
-            }
-            
             respondent = new Respondent(respondentEmail);
             
-            if(helper.insertRespondent(respondent) == 1){
+            
+            if(helper.insert(respondentEmail3, surveyId)== 1){
                 respondentEmail3 = null;
+                surveyId = getSurveyId();
                 response = "Four Respondents Were Added.";
-              //return response;
             }else{
                 respondentEmail3 = null;
+                surveyId = getSurveyId();
                 response = "Four Respondents Were Not Added.";
             }
         } 
         
         if(respondentEmail4 != null && !respondentEmail4.isEmpty()){
-            
-            if(respondentEmail4.isEmpty() == true){
-                respondentEmail4 = null;
-            }
-            
+    
             respondent = new Respondent(respondentEmail);
             
-            if(helper.insertRespondent(respondent) == 1){
+            
+            if(helper.insert(respondentEmail4, surveyId)== 1){
                 respondentEmail4 = null;
+                surveyId = getSurveyId();
                 response = "Five Respondents Were Added.";
             }else{
                 respondentEmail4 = null;
+                surveyId = getSurveyId();
                 response = "Five Respondents Were Not Added.";
             }
         } 

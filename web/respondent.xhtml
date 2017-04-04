@@ -33,9 +33,9 @@
                          size="50" maxlength="45" required="false" label="Respondent4" />
                     <h:message for="Respondent_Email4" style="color: red; font-size: 0.7em" />
                 </h:panelGrid>
+            
             <h:inputHidden id="hidden" value="#{respondentController.surveyId}" />
-            <h:inputHidden id="hidden" value="#{respondentController.respondentId}" />
-                        <h:commandButton id="Submit" value="Submit" onclick="reset" action="respondent" />
+            <h:commandButton id="Submit" value="Submit" action="respondent" />
                         <h:commandButton value="Clear" type="reset" />
         </h:form>
             <h:outputText escape="false" value="#{respondentController.response}" />
