@@ -24,7 +24,7 @@ public class QuestionHelper {
             e.printStackTrace();
         }
     }
-    
+    //put in survey helper
      public int getSurvey(){
         
         List<Survey> surveyList = null;
@@ -80,7 +80,7 @@ public class QuestionHelper {
             // binds values to the placeholders in the query
             q.setParameter("question", a.getQuestionText());
             //q.setParameter("survey", a.getSurvey());
-            q.setParameter("survey", 1);
+            q.setParameter("survey", a.getSurvey());
             
             // executes the query
             result = q.executeUpdate();

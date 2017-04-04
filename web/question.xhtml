@@ -66,13 +66,16 @@
                     
                     
                 </h:panelGrid>
-                        <h:inputHidden id="hidden" value="#{questionController.survey}" />
+            <!-- this needs to go into my code -->
+            <h:inputHidden id="hidden" value="#{questionController.surveyID}" />
+            <!--the questio ncontroler will now have the survey id to insert into the database-->
                         <h:commandButton id="Submit" value="Submit" onclick="reset" action="question" />
-                        <h:commandButton id="Next" value="Next" action="respondent.xhtml" />
+                        <h:commandButton id="Next" value="Next" action="#{respondentController.getSurveyIds(questionController.surveyID)}" />
                         <h:commandButton value="Clear" type="reset" />
         </h:form>
-        <h:outputText escape="false" value="#{questionController.response}" />
+        <h:outputText escape="false" value="#{surveyController.response}" />
     </ui:define>
 
 </ui:composition>
 </html>
+
