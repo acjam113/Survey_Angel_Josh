@@ -5,6 +5,8 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
+import javax.faces.model.DataModel;
+import javax.faces.model.ListDataModel;
 
 /**
  *
@@ -14,23 +16,39 @@ import java.util.List;
 @SessionScoped
 public class deleteSurveyController implements Serializable {
 
-    String question;
+    DataModel questions;
+    DataModel surveyTitle;
+    int questionId;
     int surveyId;
     String response;
-    
+        
     deleteSurveyHelper helper;
-    Question questions;
     
     public deleteSurveyController() {
         helper = new deleteSurveyHelper();
+        questionId = 0;
+        surveyId = 0;
+    }
+     public DataModel getQuestions() {
+         if(questions == null){
+             questions = new ListDataModel (helper.getQuestions(questionId));            
+         }
+         return questions;
+    }
+     
+     public void setQuestions(DataModel questions){
+         this.questions = questions;
+     }
+
+    public DataModel getSurveyTitle() {
+        if(surveyTitle == null){
+            surveyTitle = new ListDataModel(helper.getSurveyTitleByID(surveyId));
+        }
+        return surveyTitle;
     }
 
-    public String getQuestion() {
-        return question;
-    }
-
-    public void setQuestion(String question) {
-        this.question = question;
+    public void setSurveyTitle(DataModel surveyTitle) {
+        this.surveyTitle = surveyTitle;
     }
 
     public int getSurveyId() {
@@ -40,31 +58,18 @@ public class deleteSurveyController implements Serializable {
     public void setSurveyId(int surveyId) {
         this.surveyId = surveyId;
     }
-    
-    public List deleteSurvey(Question question){
-       return helper.selectQuestions();        
+
+    public String getResponse() {
+        String response = null;
+        
+        
+        
+        
     }
 
-    
-    public String getResponse() {
-        
-        response = null;
-        
-        
-            
-            if(helper.insert()== 1){
-                //question = null;
-                response = "Questions from table were deleted";
-                return response;
-            }else{
-                //question = null;
-                response = "Questions were not deleted";
-                return response;
-            }  
-}
-    
-
-    public void setResponse(String response) {
+    public void setResponse(int response) {
         this.response = response;
     }
+     
+    
 }

@@ -8,8 +8,30 @@
 
     <ui:define name="body">
         <h:form>
-            <h:commandButton value="Delete Survey" type="button" action="#{deleteSurveyController.deleteSurvey(question)}" />
-        </h:form>  
+            <h:dataTable value="#{deleteSurveyController.surveyTitle}" var="item" border="0" cellpadding="2" cellspacing="0">
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Survey Title" />
+                    </f:facet>
+                    <h:outputText value="#{item.surveyName}" />
+                </h:column>
+                
+                <h:column> 
+                    <h:commandButton value="Delete Survey" action="#{deleteSurveyController.deleteSurvey(item.surveyId)}" />
+                </h:column>
+            </h:dataTable>
+        </h:form>
+        
+        <!--<h:form>
+            <h:dataTable value="#{deleteSurveyController.questions}" var="item" border="0" cellpadding="2" cellspacing="0">          
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Questions" />
+                    </f:facet>
+                    <h:outputText value="#{item.questionText}" />
+                </h:column>
+            </h:dataTable>
+        </h:form>-->
         
     </ui:define>
     

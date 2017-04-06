@@ -36,6 +36,7 @@
             
             <h:inputHidden id="hidden" value="#{respondentController.surveyId}" />
             <h:commandButton id="Submit" value="Submit" action="respondent" />
+            <h:commandButton id="Next" value="Next" action="deleteSurvey" />
                         <h:commandButton value="Clear" type="reset" />
         </h:form>
             <h:outputText escape="false" value="#{respondentController.response}" />
