@@ -20,7 +20,7 @@ public class deleteSurveyController implements Serializable {
     DataModel surveyTitle;
     int questionId;
     int surveyId;
-    String response;
+    int response;
         
     deleteSurveyHelper helper;
     
@@ -29,16 +29,6 @@ public class deleteSurveyController implements Serializable {
         questionId = 0;
         surveyId = 0;
     }
-     public DataModel getQuestions() {
-         if(questions == null){
-             questions = new ListDataModel (helper.getQuestions(questionId));            
-         }
-         return questions;
-    }
-     
-     public void setQuestions(DataModel questions){
-         this.questions = questions;
-     }
 
     public DataModel getSurveyTitle() {
         if(surveyTitle == null){
@@ -64,7 +54,7 @@ public class deleteSurveyController implements Serializable {
         
         
         
-        
+        return response;
     }
 
     public void setResponse(int response) {
