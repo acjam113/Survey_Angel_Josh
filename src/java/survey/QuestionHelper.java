@@ -24,10 +24,8 @@ public class QuestionHelper {
             e.printStackTrace();
         }
     }
-    
-    
-    //put in survey helper--done
-    /* public int getSurvey(){
+    //put in survey helper
+     public int getSurvey(){
         
         List<Survey> surveyList = null;
         //int result = 0;
@@ -59,7 +57,7 @@ public class QuestionHelper {
         
         return surveyList.get(0).getSurveyId();
         //return result;
-    }*/
+    }
     
     public int insertQuestion(String questionText, int surveyID){
         int result = 0;

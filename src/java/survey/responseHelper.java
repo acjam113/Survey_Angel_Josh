@@ -1,8 +1,9 @@
-/*package survey;
+
+package survey;
 
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
-import java.util.List;*/
+import java.util.List;
 
 
 
@@ -10,7 +11,7 @@ import java.util.List;*/
  *
  * @author Angel
  */
-/*public class responseHelper {
+public class responseHelper {
     
     Session session = null;
     
@@ -120,4 +121,4 @@ import java.util.List;*/
         
         return result;
     }
-}*/
+}

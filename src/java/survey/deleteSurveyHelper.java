@@ -1,59 +1,30 @@
 
 package survey;
 
-import java.util.List;
-import org.hibernate.Session;
-import org.hibernate.SQLQuery;
-
 /**
  *
  * @author Angel
  */
-public class surveyHelper {
+
+import java.util.List;
+import org.hibernate.Session;
+import org.hibernate.SQLQuery;
+
+public class deleteSurveyHelper {
     
     Session session = null;
     
-     public surveyHelper(){
-        try{
+    public deleteSurveyHelper(){
+    
+    try{
             this.session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
         } catch (Exception e){
             e.printStackTrace();
         }
-    }
-     
-     public int getUser(){
-        
-        List<User> userList = null;
-        
-        String sql = "select * from user order by User_ID desc limit 1";
-        
-        try{
-             
-         // if this transaction is not active, make it active
-            if(!this.session.getTransaction().isActive()){
-                session.beginTransaction();
-            }
-            
-            // creating actual query that will be executed against the database
-            SQLQuery q = session.createSQLQuery(sql);
-            
-            // associating the actor table and the actor POJO
-            q.addEntity(User.class);
-            
-            // executes the query and returns it as a list
-            userList = (List<User>)q.list();
-            
-                       
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        
-        return userList.get(0).getUserId();
-    }
-     
-     
-     public int getSurveyId(){
+}
+    
+    public int getSurveyId(){
         
         List<Survey> surveyList = null;
         
@@ -82,42 +53,71 @@ public class surveyHelper {
         
         return surveyList.get(0).getSurveyId();
     }
-
-     public int insertSurvey(String surveyName, int user){
-        int result = 0;
+    
+    public List getSurveyTitleByID(int surveyId){
         
-        user = getUser();
+        List<Survey> surveyList = null;
         
-        String sql = "insert into survey(Survey_Name, User_ID)"
-                + "values (:surveyName, :userId)";
-
+        //String sql = "select * from survey order by Survey_Name desc limit 1";
+        String sql = "select * from survey order by Survey_Name desc limit 10";
+        
         try{
-            // checks to see if the transaction is active
-            if(!this.session.getTransaction().isActive()){   
+             
+            // if this transaction is not active, make it active
+            if(!this.session.getTransaction().isActive()){
                 session.beginTransaction();
             }
             
-            // creating a query that can be executed
+            // creating actual query that will be executed against the database
             SQLQuery q = session.createSQLQuery(sql);
             
-            // associating User POJO and table with a query
+            // associating the actor table and the actor POJO
             q.addEntity(Survey.class);
             
-            // binds values to the placeholders in the query
-            q.setParameter("surveyName", surveyName);
-            q.setParameter("userId", user);
-           
-            // executes the query
+            //q.setParameter("start", surveyId);
+            //q.setParameter("end", 2);
+            
+            // executes the query and returns it as a list
+            //survey = (Survey) q.uniqueResult();
+            surveyList = (List<Survey>) q.list();
+            
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+             
+        return surveyList;
+    }
+    
+    public int deleteSurvey(int surveyId){
+        //first delete from survey
+        int result = 0;
+        
+        
+        String sql = "delete from survey where Survey_ID = :survey";
+        
+        try{
+             
+         // if this transaction is not active, make it active
+            if(!this.session.getTransaction().isActive()){
+                session.beginTransaction();
+            }
+            
+            // creating actual query that will be executed against the database
+            SQLQuery q = session.createSQLQuery(sql);
+            
+            // associating the actor table and the actor POJO
+            q.addEntity(Question.class);
+            
+            q.setParameter("survey", 1);
+            
+            // executes the query and returns it as a list
             result = q.executeUpdate();
             
-            // commits the query to the database
-            session.getTransaction().commit();
-            
-            
-        } catch (Exception e){
+                       
+        }catch (Exception e){
             e.printStackTrace();
         }
         
         return result;
-     }  
+    }
 }

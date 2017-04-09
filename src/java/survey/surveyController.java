@@ -14,8 +14,16 @@ public class surveyController implements Serializable {
 
     String surveyName;
     int userID;
-    String response;
+    int getUserId;
     int surveyID;
+    
+    
+    String response;
+<<<<<<< HEAD
+    int surveyID;
+=======
+     
+>>>>>>> b8b484a1a6b815dd46e81ddfe53730af2bf04998
     surveyHelper helper;
 
     Survey survey;
@@ -37,6 +45,7 @@ public class surveyController implements Serializable {
 
     //find a way to call this only when it needs to be called
     public int getUserID() {
+<<<<<<< HEAD
         if (userID != 0) {
             return userID;
         } else {
@@ -49,23 +58,31 @@ public class surveyController implements Serializable {
         //userID=0;
         surveyName=null;
         
+=======
+        return userID;
+>>>>>>> b8b484a1a6b815dd46e81ddfe53730af2bf04998
     }
 
     public void setUserID(int userID) {
         this.userID = userID;
     }
 
+<<<<<<< HEAD
     //remake the getters and setter--done
+=======
+>>>>>>> b8b484a1a6b815dd46e81ddfe53730af2bf04998
     public int getSurveyID() {
         return surveyID;
     }
 
     public void setSurveyID(int surveyID) {
         this.surveyID = surveyID;
+        //reset getters and settera
     }
 
     public String getResponse() {
         response = null;
+<<<<<<< HEAD
         if (surveyName != null) {
 
            // survey = new Survey(surveyName, getUserID());
@@ -82,6 +99,22 @@ public class surveyController implements Serializable {
                 response = "Survey Title Added.";
                 //return response;
             } else {
+=======
+        if(surveyName != null){
+            
+            survey = new Survey(surveyName, userID);
+            
+            
+            userID = helper.getUser();
+            if(helper.insertSurvey(surveyName, userID) == 1){
+                surveyName = null;
+                //aet survey id = cll method you moved to survyehelper
+                surveyID = helper.getSurveyId();
+                //userID = 0;
+                response = "Survey Title Added.";
+              return response;
+            }else{
+>>>>>>> b8b484a1a6b815dd46e81ddfe53730af2bf04998
                 surveyName = null;
                 //userID = 0;
                 //surveyID=0;
@@ -100,3 +133,4 @@ public class surveyController implements Serializable {
     }
 
 }
+
